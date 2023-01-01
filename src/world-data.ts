@@ -6,8 +6,8 @@ import generatedRaws from "./generated-raws";
 import stringTables from "./string-tables";
 import dataFiles from "./data-files";
 import uintList from "./uint-list";
-import list from "./list";
 import map from "./map";
+import list from "./list";
 
 type Props = { reader: Reader };
 
@@ -87,6 +87,28 @@ export default async function worldData({ reader }: Props) {
 
     // 87 entries, number ranging from 30821 to 32360. Subset of nums10.
     nums11: await uintList({ reader }),
+
+    unknown9: await reader.read(8), // all 0s
+
+    // List of 5 records of 3 32 byte ints perhaps? Content for my file looks
+    // like:
+    // [602, 1291, 0]
+    // [289, 1602, 270]
+    // [7275, 0, 0]
+    // [0, 0, 0]
+    // [33_610, 21, 101]
+    unknown10: await list({
+      reader,
+      item: async reader => [
+        await reader.readUInt32(),
+        await reader.readUInt32(),
+        await reader.readUInt32(),
+      ]
+    }),
+    unknown11: await reader.read(4),  // 0s
+
+    // List of 162 integers, simply the numbers 0 through 161
+    nums12: await uintList({ reader }),
   };
 }
 
