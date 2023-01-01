@@ -124,6 +124,25 @@ export default async function worldData({ reader }: Props) {
 
     // List of 637 numbers, simply the numbers 0 through 636
     nums16: await uintList({ reader }),
+
+    // List of 1702 numbers, simply the numbers 0 through 1701
+    nums17: await uintList({ reader }),
+
+    // List of 23 numbers, simply the numbers 0 through 22
+    nums18: await uintList({ reader }),
+
+    unknown13: await reader.read(4),  // 0s
+
+    // List of 1598 incrementing numbers, ranging from 0 to 877,981
+    nums19: await uintList({ reader }),
+
+    // List of 2610 incrementing numbers, ranging from 0 to 912,073
+    nums20: await uintList({ reader }),
+
+    unknown14: await reader.read(4),  // 0s
+
+    // List of 799 numbers, simply the numbers 0 through 798
+    nums21: await uintList({ reader }),
   };
 }
 
