@@ -105,10 +105,25 @@ export default async function worldData({ reader }: Props) {
         await reader.readUInt32(),
       ]
     }),
+
     unknown11: await reader.read(4),  // 0s
 
     // List of 162 integers, simply the numbers 0 through 161
     nums12: await uintList({ reader }),
+
+    unknown12: await reader.read(4),  // 0s
+
+    // List of 57 increasing integers, range 16611 to 76889
+    nums13: await uintList({ reader }),
+
+    // List of 6, simply the numbers 0 through 5
+    nums14: await uintList({ reader }),
+
+    // List of 3600 numbers, simply the numbers 0 through 3599
+    nums15: await uintList({ reader }),
+
+    // List of 637 numbers, simply the numbers 0 through 636
+    nums16: await uintList({ reader }),
   };
 }
 
