@@ -1,0 +1,8 @@
+# Dependencies
+node_modules
+
+# Build artifacts
+src/*.js
+
+# Editors
+.vscode
